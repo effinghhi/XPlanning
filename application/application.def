@@ -1,0 +1,14 @@
+Bootstrap: localimage
+From: ../python3.11_env/python3.11.sif
+
+%files 
+  ./x_planning/scripts /opt/XPlanning
+
+%environment
+  # Set up the PATH for Poetry
+  export PATH="/opt/.poetry/bin:/opt/.pyenv/bin:$PATH"
+  export POETRY_VIRTUALENVS_PATH="/opt/.cache/pypoetry/virtualenvs"
+
+%post
+  # Install xelatex for pdf printing
+  apt install --no-install-recommends --assume-yes texlive-xetex

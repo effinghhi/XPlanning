@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "XPlanning"
+version = "0.1.0"
+description = "A brief description of your project"
+authors = ["Paul Effing <paul.effing@hhi.fraunhofer.de>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+pandas="2.2.3"
+numpy="1.26.0"
+torch="2.1.2"
+transformers="4.46.3"
+lxt="0.6.1"
+dspy="2.5.41"

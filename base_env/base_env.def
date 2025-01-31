@@ -1,0 +1,18 @@
+Bootstrap: docker
+From: vigitlab.fe.hhi.de:5050/pub/dockerimages/nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04    
+
+%files
+
+%environment
+
+%post
+  # Update and install dependencies
+  apt-get update
+  apt-get install --no-install-recommends --assume-yes curl git build-essential \
+  libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget ca-certificates liblzma-dev libffi-dev libstdc++6
+
+
+  # Install pyenv
+  git clone https://github.com/pyenv/pyenv.git /opt/.pyenv
+
+  echo "FINISHED BASE SETUP" 

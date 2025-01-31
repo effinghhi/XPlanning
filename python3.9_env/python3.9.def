@@ -1,0 +1,41 @@
+Bootstrap: localimage
+From: ../base_env/base_env.sif
+
+%files
+  pyproject.toml /opt
+
+%environment
+
+%post
+  export PYVERSION=3.9  # Default Python version
+  
+  # Set PATH for pyenv and poetry
+  export PATH="/opt/.poetry/bin:/opt/.pyenv/bin:$PATH"
+
+  # Initialize pyenv
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+
+  # Install the specified Python version using pyenv
+  pyenv install $PYVERSION
+  pyenv global $PYVERSION
+
+  # Check Python
+  python3 --version
+
+  # Install Poetry
+  curl -sSL https://install.python-poetry.org | python3 - --install-option="--prefix=/opt/.poetry"
+
+  # Create a directory for your project
+  mkdir /opt/XPlanning
+  cd /opt/XPlanning
+
+  # Create a new Poetry project
+  poetry init --no-interaction
+
+  # use the provided pyproject.toml
+  cp /opt/pyproject.toml ./
+
+  # Install dependencies
+  poetry install
+
