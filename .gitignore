@@ -1,0 +1,11 @@
+# Ignore log files
+*.log
+
+# Ignore environment variables file
+.env
+
+# Ignore sif files
+.sif
+
+# Ignore job result files
+.out
